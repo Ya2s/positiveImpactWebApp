@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base.html}"> <!--  Que signifie le ~ ? -->
+
+	<head>
+	
+		<title>Accueil</title>
+		
+	</head>
+	<body>
+	
+		<section layout:fragment="custom-content">
+		
+			<div class="jumbotron" style="opacity:0.9;">
+			  <h1>Impactez positivement le monde, votre monde !</h1>
+			  <p class="lead">
+			  	Notre association réalise des missions en faveur de l'environnement et des populations pauvres. Grâce à vos dons, nous plantons des
+			  	arbres, forons des puits et fournissons des kits de scolarité aux enfants issus de famille pauvre. Aidez-nous à continuer !
+			  </p>
+			  <hr class="my-4">
+			  <p th:if="${#arrays.isEmpty(projects)}">Aucun projet pour le moment</p>
+			  
+			  <p th:unless="${#arrays.isEmpty(projects)}" class="lead text-center">
+			    <a class="btn btn-outline-success btn-lg" href="#projects" role="button">Découvrir les projets actuels</a>
+			  </p>
+			  
+			</div>
+	
+	
+
+			<!-- <div id = "projects" class="row justify-content-md-center align-items-center" th:unless="${#arrays.isEmpty(projects)}"> -->
+				
+					<div class="card-deck">
+						<div class="card " th:each="project : ${projects}">
+							<img class="card-img-top" src="../medias/images/forestry.jpg" alt="Card image cap">
+							<div class="card-body text-center">
+							    <h5 class="card-title font-weight-bold" th:text="${project.title}">Titre du projet</h5>
+							    <p class="card-text" th:text="${project.description}">Description du projet.</p>
+							    <p th:text="'Pays : ' + ${project.country} + ' / Ville : '+ ${project.city}">Pays et Ville</p>
+							    <a 
+							    	th:href="@{/projects/{id}(id=${project.id})}" 
+							    	class="btn btn-success"
+							    >
+							   		Découvrir ce projet
+							    </a>
+							</div>
+							<div class="card-footer text-center font-weild-bold">
+						      <span 
+						      	class="text-muted" 
+						      	th:text="${#numbers.formatInteger(project.donationsTotal, 1, 'WHITESPACE')} +'€ reçu(s) / '+ ${#numbers.formatInteger(project.requiredDonationValue,1,'WHITESPACE')} + '€ requis'"
+						      >
+						      	Dons reçus par rapport à ce qui est requis pour lancer le projet
+						      </span>
+						    </div>
+						</div>
+					</div>
+				
+			
+			<!-- </div> -->
+		
+		
+		</section>
+		
+	</body>
+</html>

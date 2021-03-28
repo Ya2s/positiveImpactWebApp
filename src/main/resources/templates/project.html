@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base.html}"> <!--  Que signifie le ~ ? -->
+
+	<head>	
+		<title th:text="${project.title}">Titre du projet</title>		
+	</head>
+	
+	<body>
+	
+		<section layout:fragment="custom-content">
+		
+			<div class="text-center bg-light">
+				<h1 th:text="${project.title}" class="text-center">Titre du projet </h1>
+				<div>
+					<small th:text="'Pays : ' + ${project.country} + ' / Ville : '+ ${project.city}"></small>
+				</div>
+				
+				<p th:text="${project.description}"> Description du projet </p>
+				
+				<p th:with="currentValueNeededToAchieveProject = ${ project.requiredDonationValue - project.donationsTotal}">
+					<span th:text="'Le projet a besoin de ' + ${#numbers.formatInteger(project.requiredDonationValue, 1, 'WHITESPACE')} + '€'"> Somme nécessaire pour mener le projet à bien </span>
+					<br/>
+					<span th:text="'Le projet a reçu ' + ${#numbers.formatInteger(project.donationsTotal, 1, 'WHITESPACE')} + '€'"> Valeur actuelle des dons reçus </span>
+					<br/>
+					<span th:text="'Il reste ' + ${#numbers.formatInteger(currentValueNeededToAchieveProject, 1, 'WHITESPACE')} + '€'">Somme restante pour mener le projet à bien</span>
+					<br/>
+					<a 
+						class="btn btn-outline-success btn-sm"
+						th:if="${currentValueNeededToAchieveProject} > 0"
+						role="button"
+					>
+						<!--  FIXME : Avec ce bouton, je colle la limitation du bas. Normal ? -->
+					 	Participer à ce projet
+					  </a>  
+				
+				
+				</p>
+			</div>
+			
+			
+		</section>
+	
+	</body>
+	
+</html>
