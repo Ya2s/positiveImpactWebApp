@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-/* Fixer le footer en bas, utilisé la solution : https://www.intuwebdesign.com/blogs/css/css-fix-footer-to-bottom-of-page/ 
-   TODO : Essayer de comprendre cette solution...
-*/
+/* TODO : Fixation du footer -> cf Trello */
 
 html, body{
 	height:100%;
@@ -14,7 +12,7 @@ body{
 	background-image:url("../medias/images/forestry.jpg");
 	display: flex;
   	flex-direction: column;
-  	/* FIXME : A quoi servent les "flex" ? */
+  	/* FIXME :  flex -> cf Trello */
 }
 
 footer {

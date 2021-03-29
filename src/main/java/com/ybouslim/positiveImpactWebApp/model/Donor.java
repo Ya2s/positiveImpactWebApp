@@ -13,7 +13,7 @@ public class Donor {
 	
 	private String firstName;
 	
-	private Date birthDate;	//FIXME : J'utilise sql.Date (comme dans l'API), ok ?
+	private Date birthDate;	//FIXME : cf Trello
 	
 	private String mail;
 	
