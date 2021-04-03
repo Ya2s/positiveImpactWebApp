@@ -28,6 +28,7 @@
 						class="btn btn-outline-success btn-sm"
 						th:if="${currentValueNeededToAchieveProject} > 0"
 						role="button"
+						th:href="@{/donations(project=${project.id})}" 
 					>
 						<!--  FIXME : Avec ce bouton, je colle la limitation du bas. Normal ? -->
 					 	Participer à ce projet
